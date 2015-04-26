@@ -40,7 +40,6 @@ build_script:
 
 before_test:
 - luarocks install penlight
-- luarocks install luaposix
 - luarocks install lua-cjson
 
 test_script:
@@ -48,9 +47,7 @@ test_script:
 - cd %APPVEYOR_BUILD_FOLDER%
 - lua -l src/single-dir -e 'require "pl.utils"'
 - lua -l src/single-dir -e 'require "cjson"'
-- lua -l src/single-dir -e 'require "posix.curses"'
 - set LUA_PATH="modules/?.lua;modules/?/init.lua"
 - set LUA_CPATH="modules/?.dll"
 - lua -e 'require "pl.utils"'
 - lua -e 'require "cjson"'
-- lua -e 'require "posix.curses"'
