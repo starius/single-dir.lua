@@ -42,15 +42,15 @@ test_script:
 - cd %APPVEYOR_BUILD_FOLDER%
 # install rocks
 - luarocks install penlight
-- luarocks install rapidjson
+- luarocks install luafilesystem
 # make modules directory
 - lua -l single-dir -e "require 'pl.utils'"
-- lua -l single-dir -e "require 'rapidjson'"
+- lua -l single-dir -e "require 'lfs'"
 # remove rocks
 - luarocks remove penlight
-- luarocks remove rapidjson
+- luarocks remove luafilesystem
 # check loading
 - set LUA_PATH=single-dir-out/modules/?.lua;single-dir-out/modules/?/init.lua
 - set LUA_CPATH=single-dir-out/modules/?.dll
 - lua -e "require 'pl.utils'"
-- lua -e "require 'rapidjson'"
+- lua -e "require 'lfs'"
