@@ -15,3 +15,17 @@ test-linux:
 	lua -e 'require "pl.utils"'
 	lua -e 'require "cjson"'
 	lua -e 'require "posix.curses"'
+
+test-windows:
+	# Lua
+	lua -l src/single-dir -e 'require "pl.utils"'
+	# C
+	lua -l src/single-dir -e 'require "cjson"'
+	# All in one package
+	lua -l src/single-dir -e 'require "posix.curses"'
+	# test loading
+	set LUA_PATH="modules/?.lua;modules/?/init.lua"
+	set LUA_CPATH="modules/?.dll"
+	lua -e 'require "pl.utils"'
+	lua -e 'require "cjson"'
+	lua -e 'require "posix.curses"'
