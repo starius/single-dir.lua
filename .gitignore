@@ -39,3 +39,5 @@ luac.out
 *.x86_64
 *.hex
 
+# directory modules is created by the program
+modules
