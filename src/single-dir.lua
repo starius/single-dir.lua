@@ -74,12 +74,13 @@ local function myLoader(original_loader, path, all_in_one)
     end
 end
 
--- change package loaders
+-- package.loaders (Lua 5.1), package.searchers (Lua >= 5.2)
+local searchers = package.searchers or package.loaders
 
-local lua_loader = package.loaders[2]
-local c_loader = package.loaders[3]
-local aio_loader = package.loaders[4]
+local lua_searcher = searchers[2]
+local c_searcher = searchers[3]
+local allinone_searcher = searchers[4]
 
-package.loaders[2] = myLoader(lua_loader, package.path)
-package.loaders[3] = myLoader(c_loader, package.cpath)
-package.loaders[4] = myLoader(aio_loader, package.cpath, true)
+searchers[2] = myLoader(lua_searcher, package.path)
+searchers[3] = myLoader(c_searcher, package.cpath)
+searchers[4] = myLoader(allinone_searcher, package.cpath, true)
