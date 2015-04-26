@@ -21,7 +21,8 @@ local function mkDir(dir)
     local parts = {}
     for part in dir:gmatch('([^/]+)') do
         table.insert(parts, part)
-        local path = table.concat(parts, '/')
+        local separator = package.config:sub(1, 1)
+        local path = table.concat(parts, separator)
         if not dirExists(path) then
             os.execute("mkdir " .. path)
         end
