@@ -2,8 +2,6 @@
 -- Copyright (C) 2015 Boris Nagaev
 -- See the LICENSE file for terms of use.
 
--- change package loaders
-
 local function fileExists(name)
     local f = io.open(name, "r")
     if f ~= nil then
@@ -75,6 +73,8 @@ local function myLoader(original_loader, path, all_in_one)
         return f
     end
 end
+
+-- change package loaders
 
 local lua_loader = package.loaders[2]
 local c_loader = package.loaders[3]
