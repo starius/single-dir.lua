@@ -45,9 +45,9 @@ before_test:
 test_script:
 - echo "Testing..."
 - cd %APPVEYOR_BUILD_FOLDER%
-- lua -l single-dir -e 'require "pl.utils"'
-- lua -l single-dir -e 'require "rapidjson"'
+- lua -l single-dir -e "require 'pl.utils'"
+- lua -l single-dir -e "require 'rapidjson'"
 - set LUA_PATH="modules/?.lua;modules/?/init.lua"
 - set LUA_CPATH="modules/?.dll"
-- lua -e 'require "pl.utils"'
-- lua -e 'require "rapidjson"'
+- lua -e "require 'pl.utils'"
+- lua -e "require 'rapidjson'"
