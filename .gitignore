@@ -40,7 +40,7 @@ luac.out
 *.hex
 
 # directory modules is created by the program
-modules
+single-dir-out/modules
 
 # vim swap files
 *.swp

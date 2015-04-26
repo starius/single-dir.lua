@@ -28,8 +28,8 @@ script:
   # All in one package
   - lua -l single-dir -e 'require "posix.curses"'
   # test loading
-  - export LUA_PATH="modules/?.lua;modules/?/init.lua"
-  - export LUA_CPATH="modules/?.so"
+  - export LUA_PATH="single-dir-out/modules/?.lua;single-dir-out/modules/?/init.lua"
+  - export LUA_CPATH="single-dir-out/modules/?.so"
   - lua -e 'require "pl.utils"'
   - lua -e 'require "rapidjson"'
   - lua -e 'require "posix.curses"'

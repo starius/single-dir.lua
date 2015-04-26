@@ -52,7 +52,8 @@ end
 
 local function makeNewName(name, fname, pattern)
     local suffix = pattern:match('%?(.*)')
-    return 'modules/' .. name:gsub('%.', '/') .. suffix
+    return 'single-dir-out/modules/' ..
+        name:gsub('%.', '/') .. suffix
 end
 
 local function copyModule(name, path)
