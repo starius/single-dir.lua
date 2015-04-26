@@ -50,7 +50,7 @@ test_script:
 - luarocks remove penlight
 - luarocks remove luafilesystem
 # check loading
-- set LUA_PATH=single-dir-out/modules/?.lua;single-dir-out/modules/?/init.lua
-- set LUA_CPATH=single-dir-out/modules/?.dll
+- set LUA_PATH=single-dir-out\modules\?.lua;single-dir-out\modules\?\init.lua
+- set LUA_CPATH=single-dir-out\modules\?.dll
 - lua -e "require 'pl.utils'"
 - lua -e "require 'lfs'"
