@@ -62,11 +62,11 @@ local function copyModule(name, path)
     copyFile(fname, new_path)
 end
 
-local function myLoader(original_loader, path, all_in_one)
+local function myLoader(original_loader, path, mode)
     return function(name)
         local f = original_loader(name)
         if type(f) == "function" then
-            if all_in_one then
+            if mode == "all-in-one" then
                 name = name:match('^([^.]+)')
             end
             copyModule(name, path)
@@ -82,6 +82,7 @@ local lua_searcher = searchers[2]
 local c_searcher = searchers[3]
 local allinone_searcher = searchers[4]
 
-searchers[2] = myLoader(lua_searcher, package.path)
-searchers[3] = myLoader(c_searcher, package.cpath)
-searchers[4] = myLoader(allinone_searcher, package.cpath, true)
+searchers[2] = myLoader(lua_searcher, package.path, "Lua")
+searchers[3] = myLoader(c_searcher, package.cpath, "C")
+searchers[4] = myLoader(allinone_searcher, package.cpath,
+    "all-in-one")
