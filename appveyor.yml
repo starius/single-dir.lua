@@ -43,4 +43,11 @@ before_test:
 test_script:
 - echo "Testing..."
 - cd %APPVEYOR_BUILD_FOLDER%
-- make test-windows
+- lua -l src/single-dir -e 'require "pl.utils"'
+- lua -l src/single-dir -e 'require "cjson"'
+- lua -l src/single-dir -e 'require "posix.curses"'
+- set LUA_PATH="modules/?.lua;modules/?/init.lua"
+- set LUA_CPATH="modules/?.dll"
+- lua -e 'require "pl.utils"'
+- lua -e 'require "cjson"'
+- lua -e 'require "posix.curses"'
