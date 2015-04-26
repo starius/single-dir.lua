@@ -50,17 +50,25 @@ local function searchModule(name, path)
     end
 end
 
+local function appendToFile(fname, text)
+    local f = assert(io.open(fname, "a"))
+    f:write(text)
+    f:close()
+end
+
 local function makeNewName(name, fname, pattern)
     local suffix = pattern:match('%?(.*)')
     return 'single-dir-out/modules/' ..
         name:gsub('%.', '/') .. suffix
 end
 
-local function copyModule(name, path)
+local function copyModule(name, path, mode)
     local fname, pattern = searchModule(name, path)
     assert(fname, "Can't find module " .. name)
     local new_path = makeNewName(name, fname, pattern)
     copyFile(fname, new_path)
+    appendToFile('single-dir-out/list.txt',
+        mode  .. ' ' .. name .. ' ' .. new_path .. '\n')
 end
 
 local function myLoader(original_loader, path, mode)
@@ -70,7 +78,7 @@ local function myLoader(original_loader, path, mode)
             if mode == "all-in-one" then
                 name = name:match('^([^.]+)')
             end
-            copyModule(name, path)
+            copyModule(name, path, mode)
         end
         return f
     end
