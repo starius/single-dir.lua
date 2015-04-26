@@ -20,4 +20,9 @@ build = {
     modules = {
         ['single-dir'] = 'src/single-dir.lua',
     },
+    install = {
+        bin = {
+            ['single-dir'] = 'src/single-dir.lua',
+        },
+    },
 }
