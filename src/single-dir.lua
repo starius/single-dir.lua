@@ -32,10 +32,10 @@ end
 local function copyFile(old_path, new_path)
     local new_dir = new_path:match('.*/')
     mkDir(new_dir)
-    local f = assert(io.open(old_path, "r"))
+    local f = assert(io.open(old_path, "rb"))
     local data = f:read('*all')
     f:close()
-    local f = assert(io.open(new_path, "w"))
+    local f = assert(io.open(new_path, "wb"))
     f:write(data)
     f:close()
 end
