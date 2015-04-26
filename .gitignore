@@ -41,3 +41,6 @@ luac.out
 
 # directory modules is created by the program
 modules
+
+# vim swap files
+*.swp
