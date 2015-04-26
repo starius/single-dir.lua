@@ -1,0 +1,21 @@
+language: c
+
+env:
+  global:
+    - LUAROCKS=2.2.0
+  matrix:
+    - LUA=lua5.1
+    - LUA=lua5.2
+    - LUA=lua5.3
+    - LUA=luajit
+
+before_install:
+  - sudo apt-get update
+  - bash .travis/setup_lua.sh
+  - bash .travis/install_rocks.sh
+  - luarocks path > paths
+  - echo 'PATH=$PATH:~/.luarocks/bin' >> paths
+  - . paths
+
+script:
+  - make test
