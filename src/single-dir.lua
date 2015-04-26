@@ -91,7 +91,21 @@ local lua_searcher = searchers[2]
 local c_searcher = searchers[3]
 local allinone_searcher = searchers[4]
 
-searchers[2] = myLoader(lua_searcher, package.path, "Lua")
-searchers[3] = myLoader(c_searcher, package.cpath, "C")
-searchers[4] = myLoader(allinone_searcher, package.cpath,
-    "all-in-one")
+local function replaceSearchers()
+    searchers[2] = myLoader(lua_searcher, package.path, "Lua")
+    searchers[3] = myLoader(c_searcher, package.cpath, "C")
+    searchers[4] = myLoader(allinone_searcher, package.cpath,
+        "all-in-one")
+end
+
+local function restoreSearchers()
+    searchers[2] = lua_searcher
+    searchers[3] = c_searcher
+    searchers[4] = allinone_searcher
+end
+
+local arg = {...}
+if not arg then
+    -- this file was loaded with "lua -l single-dir"
+    replaceSearchers()
+end
