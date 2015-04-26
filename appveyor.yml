@@ -35,6 +35,9 @@ install:
 # Setup Lua development/build environment
 - call .appveyor\install.bat
 
+build_script:
+- echo "Nothing to build... TODO"
+
 before_test:
 - luarocks install penlight
 - luarocks install luaposix
