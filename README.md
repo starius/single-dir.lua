@@ -1,5 +1,7 @@
 # single-dir.lua
 
+[![Build Status](https://travis-ci.org/starius/single-dir.lua.svg?branch=master)](https://travis-ci.org/starius/single-dir.lua)
+
 Gather all dependencies of Lua module together
 
 ## Usage
