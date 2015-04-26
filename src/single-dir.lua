@@ -117,12 +117,31 @@ export LUA_CPATH="$SDO/modules/?.so;$LUA_CPATH"
 exec lua $SDO/%s "$@"
 ]]
 
+local BATCH_CODE = [[
+@echo off
+REM SDO = single-dir-out
+set SDO=%~dp0
+
+set LUA_PATH=$SDO\modules\?.lua;%LUA_PATH%
+set LUA_PATH=$SDO\modules\?\init.lua;%LUA_PATH%
+set LUA_CPATH=$SDO\modules\?.so;%LUA_CPATH%
+
+lua $SDO\base_name %*
+]]
+
 local function makeBashScript(base_name)
     local bash_script = "single-dir-out/" .. base_name .. ".sh"
     local f = io.open(bash_script, "w")
     f:write(BASH_CODE:format(base_name))
     f:close()
     os.execute("chmod +x " .. bash_script)
+end
+
+local function makeBatchScript(base_name)
+    local batch_script = "single-dir-out/" .. base_name .. ".bat"
+    local f = io.open(batch_script, "w")
+    f:write((BATCH_CODE:gsub("base_name", base_name)))
+    f:close()
 end
 
 if not arg then
@@ -142,6 +161,7 @@ else
             local new_name = "single-dir-out/" .. base_name
             copyFile(lua_file, new_name)
             makeBashScript(base_name)
+            makeBatchScript(base_name)
         end
     end
 end
