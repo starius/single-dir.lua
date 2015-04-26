@@ -2,7 +2,7 @@
 # Copyright (C) 2015 Boris Nagaev
 # See the LICENSE file for terms of use.
 
-test:
+test-linux:
 	# Lua
 	lua -l src/single-dir -e 'require "pl.utils"'
 	# C
