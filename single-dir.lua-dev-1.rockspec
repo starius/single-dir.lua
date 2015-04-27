@@ -22,7 +22,7 @@ build = {
     },
     install = {
         bin = {
-            ['single-dir'] = 'src/single-dir.lua',
+            ['make-single-dir'] = 'src/make-single-dir.lua',
         },
     },
 }
