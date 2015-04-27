@@ -1,4 +1,4 @@
--- lua-round-up, Gather all dependencies of Lua module together
+-- single-dir.lua, Gather all dependencies of Lua module together
 -- Copyright (C) 2015 Boris Nagaev
 -- See the LICENSE file for terms of use.
 
