@@ -31,15 +31,24 @@ function single_dir.mkDir(dir)
     end
 end
 
+function single_dir.readFile(fname)
+    local f = assert(io.open(fname, "rb"))
+    local data = f:read('*all')
+    f:close()
+    return data
+end
+
+function single_dir.writeFile(fname, data)
+    local f = assert(io.open(fname, "wb"))
+    f:write(data)
+    f:close()
+end
+
 function single_dir.copyFile(old_path, new_path)
     local new_dir = new_path:match('.*/')
     single_dir.mkDir(new_dir)
-    local f = assert(io.open(old_path, "rb"))
-    local data = f:read('*all')
-    f:close()
-    local f = assert(io.open(new_path, "wb"))
-    f:write(data)
-    f:close()
+    local data = single_dir.readFile(old_path)
+    single_dir.writeFile(new_path, data)
 end
 
 function single_dir.searchModule(name, path)
