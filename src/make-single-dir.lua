@@ -6,6 +6,8 @@
 
 local single_dir = require "single-dir"
 
+single_dir.restoreSearchers()
+
 local BASH_CODE = [[
 # SDO = single-dir-out
 SDO=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)

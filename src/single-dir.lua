@@ -108,9 +108,7 @@ function single_dir.restoreSearchers()
     searchers[4] = allinone_searcher
 end
 
-if not arg then
-    -- this file was loaded with "lua -l single-dir"
-    single_dir.replaceSearchers()
-end
+-- this file was loaded with "lua -l single-dir"
+single_dir.replaceSearchers()
 
 return single_dir
