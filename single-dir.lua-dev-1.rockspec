@@ -1,5 +1,5 @@
--- lua-npge, Nucleotide PanGenome explorer (Lua module)
--- Copyright (C) 2014-2015 Boris Nagaev
+-- single-dir.lua, Gather all dependencies of Lua module together
+-- Copyright (C) 2015 Boris Nagaev
 -- See the LICENSE file for terms of use.
 
 package = "single-dir.lua"
